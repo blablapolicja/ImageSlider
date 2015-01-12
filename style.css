@@ -1,0 +1,31 @@
+.carousel {
+	max-width: 600px;
+	margin: auto;
+	margin-bottom: 15px;
+}
+
+.image {
+	margin: auto;
+}
+
+.thumbnail {
+	width: 200px;
+	height: auto;
+}
+
+.carousel-caption {
+	top: 0;
+	right: -60%;
+}
+
+.preview {
+	width: 100%;
+	height: auto;
+}
+
+.list-group, 
+table,
+.for-group, button {
+	margin-top: 15px;
+}
+

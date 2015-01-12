@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Image Slider</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular-touch/angular-touch.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body ng-app="myApp" ng-controller="myController">
+	<div class="container">
+		<div class="page-header">
+			<h1>Cool test project</h1>
+			<button class="btn btn-default" ng-click="open()">Random picture</button>
+		</div>
+
+		<carousel interval="0">
+			<slide ng-repeat="slide in slides" active="slide.active">
+				<img ng-src="{{slide.image}}" class="image">
+				<div class="carousel-caption">
+					<rating ng-model="slide.rate" readonly="true" state-on="'glyphicon-heart'" state-off="'glyphicon-heart-empty'"></rating>
+				</div>
+			</slide>
+		</carousel>
+
+		<div class="row">
+			<div class="col-xs-6 col-sm-4">
+				<form>
+					<div class="form-group">
+						<input type="file" id="imageUpload">
+						<button type="submit" class="btn btn-default" ng-click="imageUpload()">Upload</button>
+					</div>
+				</form>
+				<div class="thumbnail" ng-show="showPreview">
+					<img src="" id="preview">
+				</div>
+				<ul class="list-group">
+					<li class="list-group-item" ng-repeat="slide in slides">{{slide.name}}</li>
+				</ul>
+			</div>
+
+			<div class="col-xs-12 col-sm-8">
+				<table class="table table-striped">
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th>Impressions count</th>
+					</tr>
+					<tr ng-repeat="slide in slides">
+						<td>{{$index + 1}}</td>
+						<td>{{slide.name}}</td>
+						<td>{{slide.impressions}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<script type="text/ng-template" id="myModalContent.html">
+	<div class="modal-body">
+        <img ng-src="{{image}}" class="preview">
+	</div>
+	<div class="modal-footer">
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+    </script>
+</body>
+</html>
